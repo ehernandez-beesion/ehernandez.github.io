@@ -1,17 +1,207 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eleazar Hernández — Landing</title>
+  <meta name="description" content="Landing page de ejemplo en HTML para mostrar un nombre y enlaces básicos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1226;
+      --fg: #eaeaf0;
+      --muted: #b8b9c6;
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.15);
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--fg);
+      background: radial-gradient(1200px 800px at 80% 10%, rgba(124,92,255,0.25), transparent 50%),
+                  radial-gradient(1000px 700px at 20% 90%, rgba(0,212,255,0.25), transparent 50%),
+                  linear-gradient(180deg, #0b0e20, #0f1226);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .container {
+      width: 100%;
+      max-width: 980px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+    .glow {
+      position: absolute;
+      inset: -2px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--accent), var(--accent-2), var(--accent));
+      filter: blur(30px);
+      opacity: 0.18;
+      z-index: -1;
+    }
+    header {
+      padding: 48px 40px 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 28px; color: #0b0e20;
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+    .title {
+      display: grid;
+      gap: 6px;
+    }
+    h1 {
+      font-size: clamp(28px, 6vw, 56px);
+      letter-spacing: -0.02em;
+      margin: 0;
+      line-height: 1.05;
+    }
+    .subtitle {
+      margin: 0;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: clamp(14px, 2.2vw, 18px);
+    }
+    .hero {
+      padding: 28px 40px 40px;
+      display: grid; gap: 22px;
+    }
+    .cta {
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
+    .btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--fg);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.35); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b0e20;
+      border-color: transparent;
+    }
+    .grid {
+      padding: 0 40px 40px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .cardlet {
+      grid-column: span 12;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .cardlet h3 { margin: 0 0 6px; font-size: 16px; color: var(--muted); font-weight: 600; }
+    .cardlet p { margin: 0; line-height: 1.6; }
+    @media (min-width: 720px) {
+      .cardlet { grid-column: span 4; }
+    }
+    footer {
+      padding: 18px 40px 38px;
+      border-top: 1px dashed var(--border);
+      color: var(--muted);
+      font-size: 14px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .links { display: flex; gap: 14px; flex-wrap: wrap; }
+    .links a { color: var(--fg); opacity: 0.85; text-decoration: none; }
+    .links a:hover { opacity: 1; text-decoration: underline; }
+    /* Simple fade-in */
+    .fade-in { opacity: 0; transform: translateY(6px); animation: in 600ms ease forwards; }
+    .fade-2 { animation-delay: 100ms; } .fade-3 { animation-delay: 200ms; } .fade-4 { animation-delay: 300ms; }
+    @keyframes in { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <main class="container">
+    <div class="card">
+      <div class="glow" aria-hidden="true"></div>
+      <header>
+        <!-- Cambia las iniciales si lo deseas -->
+        <div class="avatar" aria-hidden="true">EH</div>
+        <div class="title">
+          <!-- CAMBIA TU NOMBRE AQUÍ -->
+          <h1 class="fade-in">Eleazar Hernández</h1>
+          <p class="subtitle fade-in fade-2">Landing page de ejemplo en HTML</p>
+        </div>
+      </header>
+
+      <section class="hero">
+        <p class="fade-in fade-3" style="max-width: 70ch;">
+          Este es un ejemplo de landing page sencilla hecha con HTML y CSS puro. Puedes usarla como base, cambiar el nombre, la descripción y los enlaces a continuación.
+        </p>
+        <div class="cta fade-in fade-4">
+          <a class="btn primary" href="#" target="_blank" rel="noopener">Contactar</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Ver Portafolio</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Descargar CV</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="cardlet fade-in">
+          <h3>Sobre mí</h3>
+          <p>Breve descripción de quién eres y qué haces. Reemplaza este texto con tu bio.</p>
+        </article>
+        <article class="cardlet fade-in fade-2">
+          <h3>Servicios</h3>
+          <p>Lista de servicios o habilidades clave. Ejemplo: Desarrollo web, Apps móviles, Automatización.</p>
+        </article>
+        <article class="cardlet fade-in fade-3">
+          <h3>Proyectos</h3>
+          <p>Enlaza algunos trabajos o casos de estudio. Sustituye este texto por tus proyectos reales.</p>
+        </article>
+      </section>
+
+      <footer>
+        <span>© <span id="year"></span> Eleazar Hernández</span>
+        <nav class="links">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="GitHub">GitHub</a>
+          <a href="#" aria-label="Twitter/X">Twitter</a>
+          <a href="mailto:tu.email@ejemplo.com" aria-label="Email">Email</a>
+        </nav>
+      </footer>
+    </div>
+  </main>
+  <script>
+    // Año automático en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
